@@ -265,3 +265,26 @@ docker ps --format=$DOCKER_ROW_FORMAT
 - The command `-p 80:80` sets the port:
   - The first port `80` refers to the **host**.
   - The second port `80` is the **container**.
+
+## 2.6. Exposing Multiple Ports
+
+1. List all running Docker processes:
+```bash
+docker ps
+```
+2. Remove the `milanobrenovic/2048` container:
+```bash
+docker rm -f beautiful_swirles
+```
+- **Note:** you can target a container by its randomly generated name instead of container ID.
+3. Run a container and expose multiple ports on the host:
+```bash
+docker run -p 80:80 -p 4200:80 -p 3000:80 -d milanobrenovic/2048
+```
+4. Now test all localhost + port addresses and verify that it works:
+```bash
+http://localhost
+http://localhost:4200
+http://localhost:3000
+```
+- All of these urls should open the same container.
