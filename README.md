@@ -175,3 +175,43 @@ ls
 cd /usr/share/nginx/html
 ```
 7. By using `ls` in this directory, you can see all the files and folders uploaded via Docker which is then being run on http://localhost.
+
+## 2.2. Docker Images And Containers
+
+![img.png](misc/docker-images-and-containers-1.png)
+
+- Usually when building software, you have your source code, which is any code written in any programming language.
+- What you (as a developer) do, is you take that code, and then you build a Docker image.
+- From this Docker image, you can run a container.
+- Docker image is like a template for running the application.
+
+![img.png](misc/docker-images-and-containers-2.png)
+
+- From 1 Docker image, you can run multiple containers.
+- A Docker container can be a javascript app, nginx, postgres or any technology that you want to use.
+- In the previous examples, `milanobrenovic/2048` is the **image name**.
+- From this image name, we can run a container.
+
+1. To run a different image but on a port `8080`, use command:
+```bash
+docker run -d -p 8080:80 nginx
+```
+- Here we have started an image `nginx` which runs a container serving us the nginx starter template.
+2. List all Docker processes running:
+```bash
+docker ps
+```
+3. Check in the browser and verify that this container is running:
+```bash
+http://localhost:8080
+```
+4. To browse through all public Docker images, go to https://hub.docker.com/search?q=.
+5. Let's try to install a WordPress Docker image:
+```bash
+docker run -d -p 8081:80 wordpress
+```
+- **Note:** this will be run on port `8081` because `80` and `8080` are already taken and running.
+6. Check on localhost if WordPress Docker container is running:
+```bash
+http://localhost:8081
+```
