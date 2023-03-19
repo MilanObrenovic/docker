@@ -319,3 +319,23 @@ docker rm -f 9c9b8100a7e6
 ```bash
 docker run --name website -d -p 8080:80 nginx
 ```
+
+## 2.8. Running Container In The Background
+
+1. List all the containers:
+```bash
+docker ps
+```
+2. Remove the `website` container:
+```bash
+docker rm -f website
+```
+3. Running the container without `-d` will print the logs on the terminal screen:
+```bash
+docker run --name website -p 8080:80 nginx
+```
+- This will still work, but the terminal window can't be used because the container is running in the foreground and not in background.
+4. That is why the container should be ran `-d` most of the time, which will run it in background mode:
+```bash
+docker run --name website -d -p 8080:80 nginx
+```
