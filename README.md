@@ -63,3 +63,15 @@
 ## 1.3. Installing Docker
 
 - Install docker on https://docker.com/ and follow installation instructions.
+
+## 1.4. Exploring Docker Dashboard
+
+- **Containers / Apps tab:**
+  - This is where the applications we built will be running.
+  - Initially there shouldn't be anything listed.
+- **Images tab:**
+  - These are the images either on your local machine or remote repositories (Docker registries).
+- **Volumes tab:**
+  - This is used, so you can share data between host and containers.
+- **Dev Environments:**
+  - Define your project's configuration as code, distribute your project easily amongst your team, and have everyone work on the same code and any dependencies with one click.
