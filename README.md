@@ -22,6 +22,7 @@
 - VMs can also be slow to boot, whereas with Docker containers are very fast to boot.
 
 ![img.png](misc/vms.png)
+
 - Each VM consists of:
   - Infrastructure
   - Hypervisor
@@ -124,3 +125,53 @@ docker run -d -p 80:80 milanobrenovic/2048
 ```bash
 http://localhost
 ```
+
+# 2. Containers
+
+## 2.1. Understanding Containers
+
+### 2.1.1. Containers
+
+![img_1.png](misc/containers-1.png)
+
+- Container is an **isolated** environment for running applications.
+
+![img.png](misc/containers-2.png)
+
+- Contains everything your application needs, such as:
+  - Operating system
+  - Tools and binaries
+  - And most importantly, software (spring boot, nodejs, golang, javascript, or whatever is the backend application built on)
+
+![img_1.png](misc/containers-3.png)
+
+- When you run the command `docker run` following the image name, that gave us the application deployed on Docker.
+
+1. The command `docker ps` gives us a list of all running containers:
+```bash
+docker ps
+```
+- There should be 0 containers running.
+2. Assuming there are no running containers, let's run the `milanobrenovic/2048` image:
+```bash
+docker run -d -p 80:80 milanobrenovic/2048
+```
+3. Now when you list all the Docker processes running:
+```bash
+docker ps
+```
+- There should be 1 running.
+- Basically the process running here is a **container**.
+4. Execute into the running container via interactive mode using container ID:
+```bash
+docker exec -it 4edc54e943c5 sh
+```
+5. Within the shell, list all the files and folders:
+```bash
+ls
+```
+6. Navigate to `nginx` directory:
+```bash
+cd /usr/share/nginx/html
+```
+7. By using `ls` in this directory, you can see all the files and folders uploaded via Docker which is then being run on http://localhost.
