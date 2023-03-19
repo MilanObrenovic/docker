@@ -215,3 +215,28 @@ docker run -d -p 8081:80 wordpress
 ```bash
 http://localhost:8081
 ```
+
+## 2.3. Managing Containers
+
+1. List all running Docker containers:
+```bash
+docker ps
+```
+- By now it should be 3 containers: 2048, nginx and wordpress.
+2. Stop the `wordpress` container by container ID:
+```bash
+docker stop 3635573b4e19
+```
+3. List ALL containers (including the ones that are not running):
+```bash
+docker ps -a
+```
+4. Remove the `wordpress` container completely by container ID:
+```bash
+docker rm 3635573b4e19
+```
+- In case the container is running, you would need to stop it first and then remove.
+5. To remove a running container without stopping it first, use command:
+```bash
+docker rm -f 3635573b4e19
+```
