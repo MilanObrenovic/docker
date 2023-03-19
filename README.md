@@ -83,3 +83,44 @@ Useful tools and resources to know and install that will be helpful in using Doc
 - https://gitforwindows.org/ (Windows)
 - https://cmder.app/
 - https://iterm2.com/ (Mac)
+
+## 1.6. Getting Started With Docker
+
+1. Verify that Docker is installed:
+```bash
+docker --version
+```
+- This command should output the installed Docker version.
+2. View all available Docker commands:
+```bash
+docker
+```
+3. Create a Hello World Docker application:
+```bash
+docker run -d -p 80:80 docker/getting-started
+```
+4. Navigate to the browser and check if Docker is now running on localhost:
+```bash
+http://localhost
+```
+5. List all running Docker processes:
+```bash
+docker ps
+```
+- There should be a `docker/getting-started` image process running.
+6. Stop the container from running by targeting container ID:
+```bash
+docker stop 9919e467353a
+```
+7. Remove the entire docker container:
+```bash
+docker rm 9919e467353a
+```
+8. Pull and run a specific Docker image:
+```bash
+docker run -d -p 80:80 milanobrenovic/2048
+```
+9. Now test if a 2048 game is running on localhost:
+```bash
+http://localhost
+```
