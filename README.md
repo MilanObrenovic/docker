@@ -251,3 +251,17 @@ export DOCKER_ROW_FORMAT="ID:\t\t{{.ID}}\nNAME:\t\t{{.Names}}\nIMAGE:\t\t{{.Imag
 ```bash
 docker ps --format=$DOCKER_ROW_FORMAT
 ```
+
+## 2.5. Exposing Ports
+
+![img.png](misc/exposing-ports.png)
+
+- Currently, we have a container which is running a 2048 game, which is based off nginx image, and it's listening on port 80.
+- Sometimes we may want to expose the application to users.
+- It could be a React application, just a web browser, pretty much any client.
+- The client, in order to access the application, needs to talk to the container.
+- Container then exposes port 80, because nginx is listening on port 80.
+- This allows to issue a request from the client as `http(s)://ip-address:80`.
+- The command `-p 80:80` sets the port:
+  - The first port `80` refers to the **host**.
+  - The second port `80` is the **container**.
