@@ -240,3 +240,14 @@ docker rm 3635573b4e19
 ```bash
 docker rm -f 3635573b4e19
 ```
+
+## 2.4. Docker Ps Format
+
+1. To have a different format output than the one printed after using `docker ps` command, export this variable in the system environment variables:
+```bash
+export DOCKER_ROW_FORMAT="ID:\t\t{{.ID}}\nNAME:\t\t{{.Names}}\nIMAGE:\t\t{{.Image}}\nPORTS:\t\t{{.Ports}}\nCOMMAND:\t{{.Command}}\nCREATED:\t{{.CreatedAt}}\nSTATUS:\t\t{{.Status}}\n"
+```
+2. To apply this new format, use command:
+```bash
+docker ps --format=$DOCKER_ROW_FORMAT
+```
