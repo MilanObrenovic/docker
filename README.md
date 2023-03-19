@@ -59,3 +59,7 @@
 | Startup time in milliseconds     | More secure                |
 | Process level isolation          | Less popular these days    |
 | Very popular                     |                            |
+
+## 1.3. Installing Docker
+
+- Install docker on https://docker.com/ and follow installation instructions.
