@@ -75,3 +75,11 @@
   - This is used, so you can share data between host and containers.
 - **Dev Environments:**
   - Define your project's configuration as code, distribute your project easily amongst your team, and have everyone work on the same code and any dependencies with one click.
+
+## 1.5. Tools
+
+Useful tools and resources to know and install that will be helpful in using Docker:
+- Knowledge of: terminal, bash & Vim
+- https://gitforwindows.org/ (Windows)
+- https://cmder.app/
+- https://iterm2.com/ (Mac)
