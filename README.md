@@ -268,7 +268,7 @@ docker ps --format=$DOCKER_ROW_FORMAT
 
 ## 2.6. Exposing Multiple Ports
 
-1. List all running Docker processes:
+1. List all running Docker containers:
 ```bash
 docker ps
 ```
@@ -288,3 +288,34 @@ http://localhost:4200
 http://localhost:3000
 ```
 - All of these urls should open the same container.
+
+## 2.7. Naming Containers
+
+1. List all running Docker containers:
+```bash
+docker ps
+```
+2. Remove the `milanobrenovic/2048` container:
+```bash
+docker rm -f 0bdd84f3b8f5
+```
+3. Run `milanobrenovic/2048` again but this time give the container a name:
+```bash
+docker run --name 2048 -d -p 80:80 milanobrenovic/2048
+```
+4. List all running Docker containers and verify that the name was changed:
+```bash
+docker ps
+```
+5. This means we can remove the container by the given name instead of the randomly generated one or the container ID:
+```bash
+docker rm -f 2048
+```
+6. Remove the `nginx` container:
+```bash
+docker rm -f 9c9b8100a7e6
+```
+7. Recreate `nginx` container but with its own name:
+```bash
+docker run --name website -d -p 8080:80 nginx
+```
