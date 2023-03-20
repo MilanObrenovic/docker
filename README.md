@@ -398,3 +398,10 @@ docker rm -f nginx
 ```bash
 docker pull nginx
 ```
+
+## 3.4. Inspecting Images
+
+1. Inspect a specific image:
+```bash
+docker image inspect nginx
+```
