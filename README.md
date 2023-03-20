@@ -386,3 +386,15 @@ docker image rm nginx
 docker run --name website -d -p 8080:80 nginx
 ```
 - This time it should take longer to start the container because the image doesn't exist locally, so it has to pull it from Docker repository.
+
+## 3.3. Docker Pull
+
+1. Remove the `website` and `nginx` containers:
+```bash
+docker rm -f website
+docker rm -f nginx
+```
+2. The `docker run ...` command pulls the image first and then runs the container, but if you want to just pull the image without running it, use command:
+```bash
+docker pull nginx
+```
