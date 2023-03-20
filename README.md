@@ -725,3 +725,8 @@ http://localhost:3000/api/v1/users
   - https://hub.docker.com/_/postgres
   - Scrolling down below there's a version `15`.
   - It should open a `Dockerfile` which has Docker commands, running shell scripts and all of it begins with `FROM` command.
+- **Pro-tip:** to learn how to write Dockerfiles, it is highly advisable to look at how other people write Dockerfiles.
+
+## 6.10. Dockerfile Reference
+
+- Official documentation reference regarding Dockerfile: https://docs.docker.com/engine/reference/builder/
