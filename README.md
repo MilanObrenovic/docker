@@ -563,3 +563,15 @@ docker volume ls
 ```bash
 docker volume rm vol1
 ```
+
+## 5.6. TMPFS Mount
+
+![img.png](misc/tmpfs-mount.png)
+
+- There are 3 different types of volumes:
+  - **Bind mount**
+    - This is when you take a portion of your file system, and you share it between the containers.
+  - **Docker Volume**
+    - This is using a portion on the file system which is specifically for the Docker itself.
+  - **TMPFS mount**
+    - TMPFS mount is used when you want to mount to the RAM, basically a temporary storage.
