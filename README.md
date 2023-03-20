@@ -405,3 +405,31 @@ docker pull nginx
 ```bash
 docker image inspect nginx
 ```
+
+# 4. Docker Architecture
+
+## 4.1. Docker Architecture
+
+![img.png](misc/docker-architecture.png)
+
+- Docker architecture follows the client-server approach.
+- **The client** is the CLI that we've been using.
+- **The server** is the Docker Host.
+- There are also Registries (place from which we use the public/private images).
+- Inside the Docker host, there is something called a Docker Daemon.
+- **Docker Daemon** is responsible for handling the requests from the client, such as:
+  - `docker build`
+  - `docker run`
+  - `docker pull`
+- Let's say we want to run a container, if the container is not present on the local host, the Docker daemon goes and fetches it from the registry and stores it on the host.
+- Once it fetches the image, we can run containers from the image.
+  - For example one container for spring boot, the other container for postgres database etc.
+
+## 4.2. Docker Daemon
+
+![img.png](misc/docker-daemon.png)
+
+- When the client issues commands to the Docker daemon, this communication is transferred via the Docker Sock.
+- Docker Sock is basically a unique socket.
+- The Docker client communicates usually with the daemon via the unix socket `/var/run/docker.sock`.
+- A UNIX socket, is an inter-process communication mechanism that allows bidirectional data exchange between processes running on the same machine.
