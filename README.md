@@ -754,3 +754,44 @@ docker pull postgres:14beta2
 ```bash
 docker images
 ```
+
+## 7.2. Creating Tags
+
+1. Create a new tag for `dashboard` image based off the `latest` tag:
+```bash
+docker tag dashboard:latest dashboard:v1
+```
+- This should now create a `v1` version of our `dashboard` image.
+2. List all images and confirm if there is a `dashboard` image with `v1` tag:
+```bash
+docker images
+```
+3. Remove a specific image with the specific tag:
+```bash
+docker rmi dashboard:v1
+```
+Also delete the whole dashboard image:
+```bash
+docker rm -f dashboard
+```
+4. Build a `dashboard` image but with 2 different tags:
+```bash
+docker build -t dashboard:latest -t dashboard:v1 dashboard/.
+```
+5. List all images and confirm if there is a `dashboard` image with `v1` tag:
+```bash
+docker images
+```
+6. Run the `v1` container:
+```bash
+docker run --name dashboard-v1 -d -p 8080:80 dashboard:v1
+```
+Now run the `latest` container but under port `8081`:
+```bash
+docker run --name dashboard-latest -d -p 8081:80 dashboard:latest
+```
+7. Verify on localhost that both instances are the exact same thing in this case:
+```bash
+http://localhost:8080
+http://localhost:8081
+```
