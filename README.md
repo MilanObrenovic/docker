@@ -717,3 +717,11 @@ http://localhost:3000
 # Outputs a JSON array of user objects
 http://localhost:3000/api/v1/users
 ```
+
+## 6.9. Exploring Dockerfiles
+
+- On Docker Hub we can search for all the built Docker images: https://hub.docker.com/search?q=.
+- For example, postgres:
+  - https://hub.docker.com/_/postgres
+  - Scrolling down below there's a version `15`.
+  - It should open a `Dockerfile` which has Docker commands, running shell scripts and all of it begins with `FROM` command.
