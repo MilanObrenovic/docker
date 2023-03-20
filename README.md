@@ -686,3 +686,15 @@ docker run -w /src -v $PWD/user-api:/src --rm node npm init --yes
 ```bash
 docker run -w /src -v $PWD/user-api:/src --rm node npm i -S express
 ```
+
+## 6.7. Dockerfile And Building Image For `user-api`
+
+1. Add a [Dockerfile](user-api/Dockerfile) with instructions to build an image of this ExpressJS backend app.
+2. Build this image from the Dockerfile:
+```bash
+docker build user-api/. -t user-api
+```
+3. List all images and confirm that `user-api` is showing:
+```bash
+docker images
+```
