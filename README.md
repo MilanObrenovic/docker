@@ -622,3 +622,29 @@ docker build dashboard/. -t dashboard
 docker image ls
 ```
 - Under `REPOSITORY` column there should be an image called `dashboard`.
+
+## 6.4. Running A Container From Custom Image
+
+1. First remove the existing `dashboard` container if it exists:
+```bash
+docker rm -f dashboard
+```
+2. List all images:
+```bash
+docker images
+```
+- We no longer want to take the `nginx` image, we want to take `dashboard` image this time.
+3. Run the container but from `dashboard` image we just built:
+```bash
+docker run --name dashboard -d -p 8080:80 dashboard
+```
+4. List all containers:
+```bash
+docker ps
+```
+5. Navigate to localhost and verify that the admin dashboard template is still working:
+```bash
+http://localhost:8080
+```
+- **Note:** this is being run from `dashboard` image.
+- This way we don't have to mount any volume.
