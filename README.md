@@ -575,3 +575,16 @@ docker volume rm vol1
     - This is using a portion on the file system which is specifically for the Docker itself.
   - **TMPFS mount**
     - TMPFS mount is used when you want to mount to the RAM, basically a temporary storage.
+
+# 6. Building Docker Images
+
+## 6.1. Dockerfile
+
+### 6.1.1. Build Docker Images
+
+![img.png](misc/build-docker-image.png)
+
+- By now, we've seen how from code we can create a Docker image, which then runs containers.
+- The images used by now were images that someone built for us to use, such as `nginx`, `milanobrenovic/2048`, etc.
+- To create a Docker image from our code, we need a **Dockerfile**.
+- **Dockerfile** is a set of commands used to assemble a Docker image.
