@@ -648,3 +648,18 @@ http://localhost:8080
 ```
 - **Note:** this is being run from `dashboard` image.
 - This way we don't have to mount any volume.
+
+## 6.5. Investigate Container File System
+
+1. Execute into the `dashboard` container via interactive mode:
+```bash
+docker exec -it dashboard sh
+```
+2. Navigate to the nginx html directory:
+```bash
+cd /usr/share/nginx/html
+```
+This is where the entire `dashboard` image is uploaded, list everything:
+```bash
+ls
+```
