@@ -698,3 +698,22 @@ docker build user-api/. -t user-api
 ```bash
 docker images
 ```
+
+## 6.8. Running Container For `user-api` Image
+
+1. Run the image we just built:
+```bash
+docker run --name user-api -d -p 3000:3000 user-api
+```
+2. List all containers and verify that `user-api` is running now:
+```bash
+docker ps
+```
+3. Navigate to the localhost and verify that the backend API routes work:
+```bash
+# Outputs `Hello World!`
+http://localhost:3000
+
+# Outputs a JSON array of user objects
+http://localhost:3000/api/v1/users
+```
