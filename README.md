@@ -510,3 +510,30 @@ docker run -v $PWD/bind-mount:/tmp bash bash -c "echo foo > /tmp/bar.txt && cat 
 docker run -v $PWD/bind-mount:/tmp bash bash -c "cat /tmp/bar.txt"
 ```
 - This should now print the contents successfully.
+
+## 5.4. Using Volumes For Local Development
+
+1. Let's pick some free admin template such as https://startbootstrap.com/themes.
+2. Run the `nginx` container and name it `dashboard`:
+```bash
+docker run --name dashboard -d -p 8080:80 nginx
+```
+3. Verify on localhost that it works:
+```bash
+http://localhost:8080
+```
+4. Delete this container:
+```bash
+docker rm -f dashboard
+```
+5. Run a container but using the [dashboard](dashboard) directory which contains an admin dashboard template:
+```bash
+docker run --name dashboard -v $PWD/dashboard:/usr/share/nginx/html -d -p 8080:80 nginx
+```
+6. Verify on localhost this admin dashboard template is running:
+```bash
+http://localhost:8080
+```
+- Make some changes inside the [index.html](dashboard/index.html) file at line 38 by changing the title to something else.
+- These changes should take effect immediately on the browser now because we have mounted a volume.
+- Whatever changes that we make will be reflected on the host, and vice versa.
