@@ -353,3 +353,36 @@ docker run --name website -d -p 8080:80 nginx
   - Tools
   - Everything needed to run your application
 - Docker image is like a blueprint from which we can run multiple instances (containers) of the application we're building.
+
+## 3.2. Managing Docker Images
+
+1. List all docker images:
+```bash
+docker image ls
+```
+2. If the `website` container exists, delete it:
+```bash
+docker rm -f website
+```
+3. Run the website container again:
+```bash
+docker run --name website -d -p 8080:80 nginx
+```
+- Here we can notice how quickly it pulled the container, because the image was already installed in the local machine, so it just uses the existing image.
+4. To delete the image:
+```bash
+docker image rm nginx
+```
+In case there's a conflict and the image can't be removed, it's probably because the container is already running, so delete the container:
+```bash
+docker rm -f website
+```
+Now remove the image again:
+```bash
+docker image rm nginx
+```
+5. Run the website container again:
+```bash
+docker run --name website -d -p 8080:80 nginx
+```
+- This time it should take longer to start the container because the image doesn't exist locally, so it has to pull it from Docker repository.
