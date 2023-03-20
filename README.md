@@ -588,3 +588,20 @@ docker volume rm vol1
 - The images used by now were images that someone built for us to use, such as `nginx`, `milanobrenovic/2048`, etc.
 - To create a Docker image from our code, we need a **Dockerfile**.
 - **Dockerfile** is a set of commands used to assemble a Docker image.
+
+## 6.2. Creating Dockerfile
+
+1. List all containers including those which are not running:
+```bash
+docker ps -a
+```
+- There should be a container with `NAMES` column labeled as `dashboard`, if not run the command:
+```bash
+docker run --name dashboard -v $PWD/dashboard:/usr/share/nginx/html -d -p 8080:80 nginx
+```
+- If the container is not running, run it:
+```bash
+docker start dashboard
+```
+- Instead of mounting to the volume, what we want to do is create a Docker image that will contain everything regarding `dashboard` template, so we don't have to mount anything.
+2. To solve this, create a [Dockerfile](dashboard/Dockerfile) along with instructions to build that Docker image.
