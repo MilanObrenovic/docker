@@ -339,3 +339,17 @@ docker run --name website -p 8080:80 nginx
 ```bash
 docker run --name website -d -p 8080:80 nginx
 ```
+
+# 3. Images
+
+## 3.1. Docker Images
+
+- A Docker image is a file used to execute code in a Docker container.
+- Set of instructions to build a Docker container.
+- From a single Docker image, we can run multiple containers.
+- Contains:
+  - Application code
+  - Libraries
+  - Tools
+  - Everything needed to run your application
+- Docker image is like a blueprint from which we can run multiple instances (containers) of the application we're building.
