@@ -663,3 +663,26 @@ This is where the entire `dashboard` image is uploaded, list everything:
 ```bash
 ls
 ```
+
+## 6.6. Building ExpressJS API
+
+1. Generate a starter ExpressJS app, full documentation at: https://expressjs.com/en/starter/installing.html.
+2. Create a [server.js](user-api/server.js) ExpressJS starter file with 2 example routes.
+3. One option is to install express locally, but since we have Docker we don't have to, just run the command:
+```bash
+docker run -w /src -v $PWD/user-api:/src --rm node npm init --yes
+```
+- `-w /src`
+  - This will create a folder inside the container called `src`.
+- `-v $PWD/user-api:/src`
+  - Mounts a volume called `$PWD/user-api` into the folder we just created called `/src`.
+- `--rm`
+  - Removes the container when it exists (so we don't have to manually do `docker rm ...`).
+- `node npm init --yes`
+  - Node is the image name from Docker registry.
+  - Then we install the required npm packages and approve everything necessary to be installed with `--yes` command.
+- There should be [package.json](user-api/package.json) file generated now.
+4. Now let's install Express:
+```bash
+docker run -w /src -v $PWD/user-api:/src --rm node npm i -S express
+```
