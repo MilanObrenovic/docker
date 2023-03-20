@@ -605,3 +605,20 @@ docker start dashboard
 ```
 - Instead of mounting to the volume, what we want to do is create a Docker image that will contain everything regarding `dashboard` template, so we don't have to mount anything.
 2. To solve this, create a [Dockerfile](dashboard/Dockerfile) along with instructions to build that Docker image.
+
+## 6.3. Building Docker Images
+
+1. List all images:
+```bash
+docker image ls
+```
+2. Build a Docker image using the Dockerfile:
+```bash
+docker build dashboard/. -t dashboard
+```
+- `-t` is a tag and allows us to just give a name to this image that's being created.
+3. To confirm that this has worked, run this command:
+```bash
+docker image ls
+```
+- Under `REPOSITORY` column there should be an image called `dashboard`.
