@@ -433,3 +433,42 @@ docker image inspect nginx
 - Docker Sock is basically a unique socket.
 - The Docker client communicates usually with the daemon via the unix socket `/var/run/docker.sock`.
 - A UNIX socket, is an inter-process communication mechanism that allows bidirectional data exchange between processes running on the same machine.
+
+# 5. Volumes
+
+## 5.1. Volumes
+
+### 5.1.1. Docker Volumes
+
+![img.png](misc/docker-volumes.png)
+
+- Allows data to be shared between **containers** and **host**.
+- Data can be kept after container dies.
+- Let's say we have 2 containers, and we want to share data between them – this should be done through **volumes**.
+
+![img.png](misc/docker-volumes-2.png)
+
+- The types of files to share through volumes would typically be:
+  - Certificates
+  - Config files
+  - Folders
+  - Anything you want
+
+1. Run bash image from Docker, insert text into the file and print it:
+```bash
+docker run bash bash -c "echo foo > bar.txt && cat bar.txt"
+```
+- Here we have pulled the `bash` from Docker repository.
+- Then using the `-c` (command), an echo of text "foo" was inserted into `bar.txt`, and using `cat bar.txt` it read the contents of that .txt file, printing out just "foo".
+2. Run the exact same image but without echoing any text into the file:
+```bash
+docker run bash bash -c "cat bar.txt"
+```
+- It should return an error because it can't find the `bar.txt` file.
+3. List all containers INCLUDING the ones that are not running:
+```bash
+docker ps -a
+```
+- There should be bash containers with status `Exited`.
+- When we try to just read the contents of `bar.txt` it can't because each container is separate and shut down.
+- This is one of the reasons why we need to use volumes.
