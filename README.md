@@ -537,3 +537,29 @@ http://localhost:8080
 - Make some changes inside the [index.html](dashboard/index.html) file at line 38 by changing the title to something else.
 - These changes should take effect immediately on the browser now because we have mounted a volume.
 - Whatever changes that we make will be reflected on the host, and vice versa.
+
+## 5.5. Docker Volumes
+
+![img.png](misc/docker-volumes-3.png)
+
+- Inside the Filesystem, there is an area which is used specifically for Docker.
+- What we can do is from our container, we can create a volume directly into this area.
+  - The key thing here is that this Filesystem is managed by Docker itself, so we have no control over it.
+
+1. Create a volume and name it `vol1`:
+```bash
+docker volume create vol1
+```
+2. Inspect this newly created volume:
+```bash
+docker volume inspect vol1
+```
+3. List all volumes:
+```bash
+docker volume ls
+```
+- There should be `vol1` we created just now.
+4. To remove a specific volume:
+```bash
+docker volume rm vol1
+```
