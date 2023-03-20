@@ -472,3 +472,41 @@ docker ps -a
 - There should be bash containers with status `Exited`.
 - When we try to just read the contents of `bar.txt` it can't because each container is separate and shut down.
 - This is one of the reasons why we need to use volumes.
+
+## 5.2. Bind Mount Volumes
+
+### 5.2.1. Different Types Of Volumes
+
+![img.png](misc/different-types-of-volumes.png)
+
+- First we have a host.
+  - Host is your operating system that is running Docker.
+- Inside the host, let's say that we have:
+  - Container
+  - Filesystem
+  - Memory (RAM)
+- When it comes to **volumes**, we can have something called a **bind mount**.
+  - This allows the host to share its own file system using the command `-v host-path:container-path`.
+
+## 5.3. Bind Mount Volumes In Action
+
+1. To get a help of all `docker run` commands:
+```bash
+docker run --help
+```
+- There should be a `-v` command to bind mount a volume.
+2. To bind mount a volume, we'll use [bind-mount](bind-mount) directory:
+```bash
+docker run -v $PWD/bind-mount:/tmp bash bash -c "echo foo > /tmp/bar.txt && cat /tmp/bar.txt"
+```
+- In case the mount is denied, in Docker Desktop software go to:
+  1. Settings
+  2. Resources
+  3. File sharing
+  4. Add a resource file path to [bind-mount](bind-mount) directory
+- Otherwise, Docker should create a `bar.txt` file with contents of `foo`.
+3. Let's try to read the contents of that same file:
+```bash
+docker run -v $PWD/bind-mount:/tmp bash bash -c "cat /tmp/bar.txt"
+```
+- This should now print the contents successfully.
