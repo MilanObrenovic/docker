@@ -730,3 +730,27 @@ http://localhost:3000/api/v1/users
 ## 6.10. Dockerfile Reference
 
 - Official documentation reference regarding Dockerfile: https://docs.docker.com/engine/reference/builder/
+
+# 7. Image Tagging And Versioning
+
+## 7.1. Pulling Images Using A Specific Tag
+
+1. Pull the `postgres` image:
+```bash
+docker pull postgres
+```
+- Notice how it's using the **default tag: latest**.
+- This means that it's downloading the **latest** version of `postgres` image.
+2. List all images:
+```bash
+docker images
+```
+- There should be a `postgres` image.
+3. Pull a specific image version by targeting a tag:
+```bash
+docker pull postgres:14beta2
+```
+4. List all images again and verify the tag version is now `14beta2`:
+```bash
+docker images
+```
