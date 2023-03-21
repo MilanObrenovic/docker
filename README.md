@@ -947,3 +947,37 @@ docker logs dashboard-v1
 ```bash
 docker logs dashboard-v1 -f
 ```
+
+## 9.3. Running Commands In Containers
+
+1. Execute into the container `user-api` and list all its environment variables:
+```bash
+docker exec user-api env
+```
+2. List all the files in the working directory:
+```bash
+docker exec user-api ls
+```
+3. Get working directory:
+```bash
+docker exec user-api pwd
+```
+4. Get root directory:
+```bash
+docker exec user-api ls /
+```
+5. Execute into `user-api` container shell via interactive mode:
+```bash
+docker exec -it user-api sh
+```
+6. From inside the running container, you can use all the Linux commands such as:
+- `pwd` working directory.
+- `ls` list all files and folders.
+- `cd /` change directory to root.
+- `top` see all top processes running within this container.
+- `df` check disk space usage.
+- ...
+7. If the container doesn't support `sh`, you can also `bash` into it:
+```bash
+docker exec -it user-api bash
+```
