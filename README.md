@@ -1022,3 +1022,30 @@ docker network inspect mongo
 ```
 - The default network driver should be `bridge`.
 - Full documentation to learn about all the network drivers can be found at: https://docs.docker.com/network/
+
+## 10.3. MongoDB Container
+
+- Full documentation for Docker `mongo` image:
+  - https://hub.docker.com/_/mongo
+
+1. List all networks:
+```bash
+docker network ls
+```
+- Confirm that there is a `mongo` network listed.
+2. Run this newly created network:
+```bash
+docker run --name mongo -d -p 27017:27017 --network mongo -e MONGO_INITDB_ROOT_USERNAME=username -e MONGO_INITDB_ROOT_PASSWORD=secret mongo:5.0.15
+```
+- `--name mongo` give this container a name of "**mongo**".
+- `-d` run this container in **detach** mode (background mode).
+- `-p 27017:27017` run the MongoDB on port **27017**.
+- `--network mongo` switch to **mongo** network.
+- `-e MONGO_INITDB_ROOT_USERNAME=username` set the database username to "**username**" to keep it simple.
+- `-e MONGO_INITDB_ROOT_PASSWORD=secret` set the database password to "**secret**".
+- `mongo:5.0.15` use the "**mongo**" Docker image to create this container and target the **5.0.15** version of that image.
+3. View logs of the `mongo` container:
+```bash
+docker logs mongo
+```
+- Notice at the bottom how it's "Waiting for connections", listening on "localhost" and port "27017".
