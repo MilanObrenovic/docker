@@ -1093,3 +1093,47 @@ http://localhost:8081
 ```
 - It should display a MongoDB GUI.
 - MongoExpress container should now successfully communicate with MongoDB container, via the same network.
+
+## 10.5. Understanding Container Communication
+
+![img.png](misc/understanding-container-communication.png)
+
+- MongoExpress when connecting to MongoDB uses `http://mongo:27017`.
+- The word `mongo` here is the `host`.
+- Host is the same as **Container Name**.
+
+1. Execute into the `mongo` container shell via interactive mode:
+```bash
+docker run --rm -it mongo sh
+```
+- `--rm` removes the container as soon as we exit interactive mode.
+2. Within the container shell, type:
+```bash
+mongosh
+```
+- It should fail to connect because there is nothing running inside of this container.
+3. Within the shell, connect to the MongoDB container:
+```bash
+mongosh --host mongo -u username -p secret
+```
+- `--host mongo`
+  - Instead of using localhost, we need to use the container name.
+- `-u username`
+  - Is the username set in MongoDB container.
+- `-p secret`
+  - Is the password set in MongoDB container.
+- However, this should still fail to connect because the host (`mongo`) is not found.
+- This is because we are not using the network.
+4. Exit the shell and run the same command but this time targeting the `mongo` network:
+```bash
+docker run --rm --network mongo -it mongo sh
+```
+5. Now within the shell try to connect to the MongoDB:
+```bash
+mongosh --host mongo -u username -p secret
+```
+- This should now connect to the database successfully.
+6. List all databases within the shell:
+```bash
+show databases
+```
