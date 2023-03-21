@@ -1176,3 +1176,11 @@ docker network disconnect test dashboard-v1
 ```bash
 docker network rm test
 ```
+
+# 11. Docker Compose
+
+## 11.1. What Is Docker Compose
+
+- **Docker Compose** is a tool for defining and running multi-container Docker applications using a single yaml file.
+- Instead of having to run several individual Docker commands, we can have 1 file and run 1 command, and have all of the resources defined in the file created by us.
+- To destroy all resources created by that file, we can just use the same file and teardown everything.
