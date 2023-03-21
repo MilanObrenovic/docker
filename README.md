@@ -1198,3 +1198,9 @@ docker compose --help
 - `docker-compose` is v1.
 - `docker compose` is v2.
 - The v1 will be deprecated and removed from the end of June 2023, so use only Docker Compose v2.
+
+## 11.3. Services
+
+- Let's define a file that will enable us to start both MongoDB instance and MongoExpress, and have them talk to each other.
+
+1. Create a [docker-compose.yml](docker-compose/docker-compose.yml) file, it must be named exactly like that.
