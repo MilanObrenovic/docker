@@ -795,3 +795,36 @@ docker run --name dashboard-latest -d -p 8081:80 dashboard:latest
 http://localhost:8080
 http://localhost:8081
 ```
+
+## 7.3. Creating Version 2 Of The Dashboard
+
+1. Update [index.html](dashboard/index.html) at some parts just to make it distinct that it's a version 2.
+2. Build this `v2` image:
+```bash
+docker build -t dashboard:latest -t dashboard:v2 dashboard/.
+```
+3. List all images and verify `v2` image exists:
+```bash
+docker images
+```
+4. Remove the `dashboard-latest` container:
+```bash
+docker rm -f dashboard-latest
+```
+5. Run the `dashboard-latest` again:
+```bash
+docker run --name dashboard-latest -d -p 8081:80 dashboard
+```
+6. Check if the `dashboard-latest` changes have been reflected on localhost:
+```bash
+http://localhost:8081
+```
+7. Now run the `v2` on port `8082`:
+```bash
+docker run --name dashboard-v2 -d -p 8082:80 dashboard:v2
+```
+8. Check if the `dashboard-v2` changes have been reflected on localhost:
+```bash
+http://localhost:8082
+```
+- It should be the same as `v1` since nothing was changed.
