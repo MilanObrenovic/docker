@@ -1204,3 +1204,9 @@ docker compose --help
 - Let's define a file that will enable us to start both MongoDB instance and MongoExpress, and have them talk to each other.
 
 1. Create a [docker-compose.yml](docker-compose/docker-compose.yml) file, it must be named exactly like that.
+
+## 11.4. Docker Network
+
+- In order for communication to happen between `mongo` and `mongo-express` containers, we need to add them to the same network within Docker Compose yaml file.
+
+1. In [docker-compose.yml](docker-compose/docker-compose.yml) define `networks` and apply it to both containers.
