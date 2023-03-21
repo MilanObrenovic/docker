@@ -1000,3 +1000,25 @@ docker exec -it user-api bash
 - To have these two containers talk to each other, we have to use **Docker Network**.
 - A network needs to be created and attached to these two containers.
 - When containers want to talk to each other, they just refer to the container name itself.
+
+## 10.2. Docker Network
+
+1. To allow containers to talk to each other, create a network called `mongo`:
+```bash
+docker network create mongo
+```
+2. List all networks:
+```bash
+docker network ls
+```
+- Confirm that there is a `mongo` network listed.
+3. To remove a network, use command:
+```bash
+docker network rm mongo
+```
+4. Inspect a specific network:
+```bash
+docker network inspect mongo
+```
+- The default network driver should be `bridge`.
+- Full documentation to learn about all the network drivers can be found at: https://docs.docker.com/network/
