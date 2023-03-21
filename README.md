@@ -1368,3 +1368,8 @@ docker run -v /var/run/docker.sock:/var/run/docker.sock -v $HOME/Library/Caches:
 docker scout cves gcr.io/distroless/static
 ```
 - There should be no vulnerabilities found.
+
+## 12.4. Security Best Practices
+
+- Full documentation for best practices and common mistakes regarding Docker:
+  - https://cheatsheetseries.owasp.org/cheatsheets/Docker_Security_Cheat_Sheet.html
