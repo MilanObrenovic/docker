@@ -872,3 +872,37 @@ http://localhost:8082
   - [Google Container Registry](https://cloud.google.com/container-registry)
   - [Microsoft Azure Container Registry](https://azure.microsoft.com/en-us/products/container-registry)
   - [GitHub Packages](https://github.com/features/packages)
+
+## 8.2. Docker Login
+
+1. Sign into Docker Hub: https://login.docker.com/u/login
+2. Try to pull one of the public images:
+```bash
+docker pull milanobrenovic/kubernetes:frontend-v1
+```
+- This is a public image and anyone can pull it without authenticating.
+3. Now try to pull a private image:
+```bash
+docker pull milanobrenovic/private-frontend
+```
+- This should fail if you're not authenticated into the `milanobrenovic` Docker Hub account.
+4. To authenticate, use command:
+```bash
+docker login -u 'milanobrenovic' -p '<password>'
+```
+**Note:** you can view all the login commands with:
+```bash
+docker login --help
+```
+5. View the Docker login configuration:
+```bash
+cat ~/.docker/config.json
+```
+- There should be a json key with `credsStore`.
+```json
+{
+  "credsStore": "desktop"
+}
+```
+- `desktop` means you will be prompted to enter username/password manually when you want to push a repository to Docker Hub.
+- `osxkeychain` is only for Mac and means it will automatically use the username/password saved in Key Chain Access software, without you having to manually login.
