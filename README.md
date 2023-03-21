@@ -1137,3 +1137,42 @@ mongosh --host mongo -u username -p secret
 ```bash
 show databases
 ```
+
+## 10.6. Another Example
+
+1. Execute into the `dashboard-v1` container shell via interactive mode:
+```bash
+docker exec -it dashboard-v1 sh
+```
+2. Try to fetch the `user-api` container GET request from the API:
+```bash
+curl http://user-api:3000/api/v1/users
+```
+- It should fail because these two containers are not running under the same network.
+3. Create a new network:
+```bash
+docker network create test
+```
+4. Connect the network to a specific container:
+```bash
+docker network connect test user-api
+docker network connect test dashboard-v1
+```
+5. Execute into the `dashboard-v1` container shell again via interactive mode:
+```bash
+docker exec -it dashboard-v1 sh
+```
+6. Try to fetch the `user-api` container GET request again from the API:
+```bash
+curl http://user-api:3000/api/v1/users
+```
+- Now it should fetch the API json successfully.
+7. To disconnect a container from a specific network:
+```bash
+docker network disconnect test dashboard-v1
+```
+- **Note:** although you can, don't have to disconnect `user-api` because it is not talking to `dashboard-v1` container.
+8. To delete a specific network:
+```bash
+docker network rm test
+```
