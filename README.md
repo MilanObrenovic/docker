@@ -1238,3 +1238,47 @@ http://localhost:8081
 cd docker-compose/
 docker compose up -d
 ```
+
+## 11.6. Exploring Docker Compose Commands
+
+1. View all Docker compose commands:
+```bash
+docker compose --help
+```
+2. To target a specific Docker compose directory and build from it, use command:
+```bash
+docker compose -f docker-compose/docker-compose.yml up -d
+```
+3. List all containers started by Docker compose:
+```bash
+docker compose -f docker-compose/docker-compose.yml ps
+```
+4. List running Docker compose projects:
+```bash
+docker compose -f docker-compose/docker-compose.yml ls
+```
+5. Stop everything that has been started by docker compose file:
+```bash
+docker compose -f docker-compose/docker-compose.yml stop
+```
+6. Start everything again:
+```bash
+docker compose -f docker-compose/docker-compose.yml start
+```
+7. To delete everything:
+```bash
+docker compose -f docker-compose/docker-compose.yml down
+```
+- **NOTE:** this will delete everything, including all the database and data stored prior.
+8. To install everything back again, use the standard command:
+```bash
+docker compose -f docker-compose/docker-compose.yml up -d
+```
+9. View logs of a specific container:
+```bash
+docker compose -f docker-compose/docker-compose.yml logs mongo
+```
+10. Or view logs and also watch for real-time changes:
+```bash
+docker compose -f docker-compose/docker-compose.yml logs mongo -f
+```
