@@ -906,3 +906,24 @@ cat ~/.docker/config.json
 ```
 - `desktop` means you will be prompted to enter username/password manually when you want to push a repository to Docker Hub.
 - `osxkeychain` is only for Mac and means it will automatically use the username/password saved in Key Chain Access software, without you having to manually login.
+
+## 8.3. Docker Push
+
+1. List all images:
+```bash
+docker images
+```
+- Make sure there is a `user-api` repository available locally.
+2. Since it exists on the local machine only, we have to re-tag it to the Docker Hub repository `milanobrenovic/user-api`:
+```bash
+docker tag user-api:latest milanobrenovic/user-api:latest
+```
+3. List all images again:
+```bash
+docker images
+```
+- Verify that there is an image from repository `milanobrenovic/user-api` this time.
+4. Push this local image to Docker Hub:
+```bash
+docker push milanobrenovic/user-api:latest
+```
