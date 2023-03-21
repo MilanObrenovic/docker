@@ -1037,15 +1037,59 @@ docker network ls
 ```bash
 docker run --name mongo -d -p 27017:27017 --network mongo -e MONGO_INITDB_ROOT_USERNAME=username -e MONGO_INITDB_ROOT_PASSWORD=secret mongo:5.0.15
 ```
-- `--name mongo` give this container a name of "**mongo**".
-- `-d` run this container in **detach** mode (background mode).
-- `-p 27017:27017` run the MongoDB on port **27017**.
-- `--network mongo` switch to **mongo** network.
-- `-e MONGO_INITDB_ROOT_USERNAME=username` set the database username to "**username**" to keep it simple.
-- `-e MONGO_INITDB_ROOT_PASSWORD=secret` set the database password to "**secret**".
-- `mongo:5.0.15` use the "**mongo**" Docker image to create this container and target the **5.0.15** version of that image.
+- `--name mongo`
+  - Give this container a name of "**mongo**".
+- `-d`
+  - Run this container in **detach** mode (background mode).
+- `-p 27017:27017`
+  - Run the MongoDB on port **27017**.
+- `--network mongo`
+  - Switch to **mongo** network.
+- `-e MONGO_INITDB_ROOT_USERNAME=username`
+  - Set the environment variable of database username to "**username**" (to keep it simple).
+- `-e MONGO_INITDB_ROOT_PASSWORD=secret`
+  - Set the environment variable of database password to "**secret**".
+- `mongo:5.0.15`
+  - Use the "**mongo**" Docker image to create this container and target the **5.0.15** version of that image.
 3. View logs of the `mongo` container:
 ```bash
 docker logs mongo
 ```
 - Notice at the bottom how it's "Waiting for connections", listening on "localhost" and port "27017".
+
+## 10.4. MongoExpress
+
+- Full documentation for Docker `mongo-express` image:
+  - https://hub.docker.com/_/mongo-express
+
+1. Run the `mongo-express` container:
+```bash
+docker run --name mongo-express -d -p 8081:8081 --network mongo -e ME_CONFIG_MONGODB_ADMINUSERNAME=username -e ME_CONFIG_MONGODB_ADMINPASSWORD=secret -e ME_CONFIG_MONGODB_SERVER=mongo mongo-express
+```
+- `--name mongo-express`
+  - Give this container a name of "**mongo-express**".
+- `-d`
+  - Run this container in **detach** mode (background mode).
+- `-p 8081:8081`
+  - Run the Mongo Express on port **8081**.
+- `--network mongo`
+  - Switch to **mongo** network.
+- `-e ME_CONFIG_MONGODB_ADMINUSERNAME=username`
+  - Set the environment variable of database admin username to "**username**" (has to be the same as MongoDB).
+- `-e ME_CONFIG_MONGODB_ADMINPASSWORD=secret`
+  - Set the environment variable of database admin password to "**secret**" (has to be the same as MongoDB).
+- `-e ME_CONFIG_MONGODB_SERVER=mongo`
+  - Set the environment variable of server name to "**mongo**" (has to be the same as the MongoDB container name).
+- `mongo-express`
+  - Use the "**mongo-express**" Docker image to create this container and target the **latest** version of that image.
+2. View logs of the `mongo-express` container:
+```bash
+docker logs mongo-express
+```
+- It should print out that server is open to allow connections from anyone.
+3. Test that it works on localhost:
+```bash
+http://localhost:8081
+```
+- It should display a MongoDB GUI.
+- MongoExpress container should now successfully communicate with MongoDB container, via the same network.
