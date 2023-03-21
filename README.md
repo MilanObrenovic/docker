@@ -1184,3 +1184,17 @@ docker network rm test
 - **Docker Compose** is a tool for defining and running multi-container Docker applications using a single yaml file.
 - Instead of having to run several individual Docker commands, we can have 1 file and run 1 command, and have all of the resources defined in the file created by us.
 - To destroy all resources created by that file, we can just use the same file and teardown everything.
+
+## 11.2. Docker Compose CMD
+
+- Full documentation for Docker Compose:
+  - https://docs.docker.com/compose/compose-file/
+
+1. View all the commands of Docker Compose:
+```bash
+docker compose --help
+```
+**Note:**
+- `docker-compose` is v1.
+- `docker compose` is v2.
+- The v1 will be deprecated and removed from the end of June 2023, so use only Docker Compose v2.
