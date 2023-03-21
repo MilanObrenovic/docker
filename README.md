@@ -1187,9 +1187,6 @@ docker network rm test
 
 ## 11.2. Docker Compose CMD
 
-- Full documentation for Docker Compose:
-  - https://docs.docker.com/compose/compose-file/
-
 1. View all the commands of Docker Compose:
 ```bash
 docker compose --help
@@ -1301,3 +1298,8 @@ http://localhost:8081
 docker volume ls
 ```
 - There should be `docker-compose_data` which was created by Docker compose.
+
+## 11.8. Docker Compose Documentation
+
+- Full documentation for Docker Compose:
+  - https://docs.docker.com/compose/compose-file/
