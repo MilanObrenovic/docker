@@ -1346,3 +1346,25 @@ docker scout cves node
 docker run -v /var/run/docker.sock:/var/run/docker.sock -v $HOME/Library/Caches:/root/.cache/ aquasec/trivy:0.38.3 image node
 ```
 - **Note:** this command was used from the official Trivy site during installation.
+
+## 12.3. Distroless Images
+
+- Full documentation for Distroless Images:
+  - https://github.com/GoogleContainerTools/distroless
+- When building applications and containerizing them, best practice is to use **distroless images in production**.
+- Distroless images contain only your application and its runtime dependencies.
+- They do not contain package managers, shells or any other programs you would expect to find in a standard Linux distribution.
+
+### 12.3.1. Why Use Distroless Images?
+
+- Best practice employed by Google and other tech giants that have used containers in production for many years.
+- Improves the signal-to-noise of scanners (e.g. CVE) and reduces the burden of establishing provenance to just what you need.
+- If you use a distroless image, then you only have your application as well as any dependency it needs in order to run.
+- Distroless images are **very small**.
+- The smallest distroless image is around 650 kB.
+
+1. Scan the distroless image:
+```bash
+docker scout cves gcr.io/distroless/static
+```
+- There should be no vulnerabilities found.
