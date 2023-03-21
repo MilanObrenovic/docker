@@ -981,3 +981,22 @@ docker exec -it user-api sh
 ```bash
 docker exec -it user-api bash
 ```
+
+# 10. Networking
+
+## 10.1. How To Communicate Between Containers
+
+### 10.1.1. Docker Network
+
+![img.png](misc/docker-network.png)
+
+- Let's say that we have a **Mongo Express** container and a **MongoDB** container.
+- Mongo Express is a GUI client that allows to connect to the Mongo database, so you can see all the collections, documents, perform queries etc.
+- To connect these two containers together, using localhost will **NOT** work.
+- That is because each container is self-contained for itself, and it only knows about the services running inside of that container.
+
+![img.png](misc/docker-network-2.png)
+
+- To have these two containers talk to each other, we have to use **Docker Network**.
+- A network needs to be created and attached to these two containers.
+- When containers want to talk to each other, they just refer to the container name itself.
