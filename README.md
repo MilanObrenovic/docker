@@ -1306,7 +1306,7 @@ docker volume ls
 
 # 12. Security And Static Analysis Tools
 
-## 12.1. Docker Scan
+## 12.1. Docker Scan (Scout Cves)
 
 - The command `docker scout cves` scans your images for vulnerabilities.
 - When you're building software you want to make sure the containers you're building are free from security attacks.
@@ -1321,3 +1321,28 @@ docker scout cves --help
 ```bash
 docker scout cves node
 ```
+
+## 12.2. Trivy
+
+- Full documentation for Trivy:
+  - https://aquasecurity.github.io/trivy/
+- Detects 2 types of security issues:
+  - Vulnerabilities for your images.
+  - Misconfigurations.
+- Scans 3 different artifacts:
+  - Container images
+  - Filesystem
+  - Git repositories (remote)
+  - Virtual Machine (VM) image
+  - Kubernetes
+  - AWS
+- Can be run in 2 different modes:
+  - Standalone
+  - Client/Server
+
+1. To install Trivy, go to https://aquasecurity.github.io/trivy/v0.38/getting-started/installation/.
+2. Run Trivy using Docker:
+```bash
+docker run -v /var/run/docker.sock:/var/run/docker.sock -v $HOME/Library/Caches:/root/.cache/ aquasec/trivy:0.38.3 image node
+```
+- **Note:** this command was used from the official Trivy site during installation.
