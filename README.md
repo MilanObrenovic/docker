@@ -1303,3 +1303,21 @@ docker volume ls
 
 - Full documentation for Docker Compose:
   - https://docs.docker.com/compose/compose-file/
+
+# 12. Security And Static Analysis Tools
+
+## 12.1. Docker Scan
+
+- The command `docker scout cves` scans your images for vulnerabilities.
+- When you're building software you want to make sure the containers you're building are free from security attacks.
+- There are tools to detect any vulnerabilities your images might have.
+- View all commands of `scout cves`:
+```bash
+docker scout cves --help
+```
+- **NOTE:** the old version command used to be `docker scan`.
+
+1. Scan a specific image:
+```bash
+docker scout cves node
+```
