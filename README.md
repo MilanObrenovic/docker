@@ -1210,3 +1210,31 @@ docker compose --help
 - In order for communication to happen between `mongo` and `mongo-express` containers, we need to add them to the same network within Docker Compose yaml file.
 
 1. In [docker-compose.yml](docker-compose/docker-compose.yml) define `networks` and apply it to both containers.
+
+## 11.5. Docker Compose Up
+
+1. First off delete `mongo` and `mongo-express` containers if they already exist:
+```bash
+docker rm -f mongo
+docker rm -f mongo-express
+```
+2. Remove the `mongo` network:
+```bash
+docker network rm mongo
+```
+3. Use Docker compose to build the containers:
+```bash
+cd docker-compose/
+docker compose up 
+```
+4. Everything should be up and running now, verify on localhost that it works like before:
+```bash
+http://localhost:8081
+```
+- However, this process has been started in the foreground.
+- If you close it, localhost won't work anymore.
+5. To run Docker compose in the background, use command `-d`:
+```bash
+cd docker-compose/
+docker compose up -d
+```
