@@ -853,3 +853,22 @@ http://localhost:8082
     - Operating system that was built for use inside of containers.
     - Has a really tiny size.
     - However, some teams are moving away from alpine because these images can cause compatibility issues that are hard to debug.
+
+# 8. Docker Registries
+
+## 8.1. Docker Registries
+
+- **Docker registry** is a storage and distribution system for Docker images, such as **Dockerhub**.
+- There can be 2 types of images:
+  - **Public**
+    - Publicly available, anyone can pull those images.
+  - **Private**
+    - Images that you have full control, and only you can pull those images.
+- The command `docker pull` fetches a Docker image from Docker registry to our local machine (the host).
+- Any image stored on the local machine can be pushed back to the Docker registry using the command `docker push`.
+- Most popular Docker registries are:
+  - [DockerHub](https://hub.docker.com/search?q=)
+  - [Amazon Elastic Container Registry](https://aws.amazon.com/ecr/)
+  - [Google Container Registry](https://cloud.google.com/container-registry)
+  - [Microsoft Azure Container Registry](https://azure.microsoft.com/en-us/products/container-registry)
+  - [GitHub Packages](https://github.com/features/packages)
