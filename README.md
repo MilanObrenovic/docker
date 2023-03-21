@@ -927,3 +927,12 @@ docker images
 ```bash
 docker push milanobrenovic/user-api:latest
 ```
+
+# 9. Debugging
+
+## 9.1. Docker Inspect
+
+1. Get more information about a specific container:
+```bash
+docker inspect dashboard-v1
+```
