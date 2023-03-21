@@ -828,3 +828,10 @@ docker run --name dashboard-v2 -d -p 8082:80 dashboard:v2
 http://localhost:8082
 ```
 - It should be the same as `v1` since nothing was changed.
+
+## 7.4. Never Run Latest In Production
+
+- **Never** run the `latest` version of custom images in production.
+- This is because if your latest software has changes, for example let's say that you're running Kubernetes, or a VM and the VM restarts, it would pull the image and always pull the latest image.
+- Therefore, leaving you without control with the image that you're running in production.
+- Always stick to using a **tag**.
