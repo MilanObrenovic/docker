@@ -936,3 +936,14 @@ docker push milanobrenovic/user-api:latest
 ```bash
 docker inspect dashboard-v1
 ```
+
+## 9.2. Logs
+
+1. View logs for a specific container:
+```bash
+docker logs dashboard-v1
+```
+2. View logs in real-time to watch changes as they happen:
+```bash
+docker logs dashboard-v1 -f
+```
