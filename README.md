@@ -835,3 +835,21 @@ http://localhost:8082
 - This is because if your latest software has changes, for example let's say that you're running Kubernetes, or a VM and the VM restarts, it would pull the image and always pull the latest image.
 - Therefore, leaving you without control with the image that you're running in production.
 - Always stick to using a **tag**.
+
+## 7.5. Image Variants
+
+- Take a look at for example [Node Image](https://hub.docker.com/_/node).
+- There are several supported tags (versions of Node).
+- More information regarding differences between these versions can be found on this [Medium Article](https://medium.com/swlh/alpine-slim-stretch-buster-jessie-bullseye-bookworm-what-are-the-differences-in-docker-62171ed4531d).
+- Some versions are:
+  - **stretch/buster/jessie**
+    - Written for different Debian releases.
+  - **-slim**
+    - Paired down version of the full image.
+    - Only installs minimal packages needed to run your particular tool.
+    - Leaves out lesser-used tools and binaries that you don't need.
+  - **-alpine**
+    - Based on the Alpine Linux Project.
+    - Operating system that was built for use inside of containers.
+    - Has a really tiny size.
+    - However, some teams are moving away from alpine because these images can cause compatibility issues that are hard to debug.
