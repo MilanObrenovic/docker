@@ -1282,3 +1282,22 @@ docker compose -f docker-compose/docker-compose.yml logs mongo
 ```bash
 docker compose -f docker-compose/docker-compose.yml logs mongo -f
 ```
+
+## 11.7. Docker Volume
+
+- Volumes are used to keep the data persisted.
+
+1. In [docker-compose.yml](docker-compose/docker-compose.yml), create a `volumes` with empty data.
+2. Apply these changes:
+```bash
+docker compose -f docker-compose/docker-compose.yml up -d
+```
+3. Create a new database via localhost:
+```bash
+http://localhost:8081
+```
+4. List all volumes:
+```bash
+docker volume ls
+```
+- There should be `docker-compose_data` which was created by Docker compose.

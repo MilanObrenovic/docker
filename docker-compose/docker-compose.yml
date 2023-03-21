@@ -9,6 +9,10 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=toor
     networks:
       - mongo
+    volumes:
+      # `data` targets the volume defined below in this Docker Compose file.
+      # `/data` maps inside of this container directory called "data".
+      - data:/data
   mongo-express:
     image: mongo-express
     container_name: mongo-express
@@ -23,6 +27,9 @@ services:
     depends_on:
       - mongo
     restart: always
+
+volumes:
+  data: {}
 
 networks:
   mongo:
