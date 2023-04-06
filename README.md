@@ -1,5 +1,8 @@
 # 0. Table Of Contents
 
+<details>
+  <summary>Toggle table of contents</summary>
+  
 [1. Getting Started](#1-getting-started)
   - [1.1. What Is Docker](#11-what-is-docker)
   - [1.2. Docker Vs Virtual Machine](#12-docker-vs-virtual-machine)
@@ -98,6 +101,7 @@
   - [12.3. Distroless Images](#123-distroless-images)
     * [12.3.1. Why Use Distroless Images?](#1231-why-use-distroless-images)
   - [12.4. Security Best Practices](#124-security-best-practices)
+</details>
 
 # 1. Getting Started
 
