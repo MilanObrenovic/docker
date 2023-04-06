@@ -1,3 +1,104 @@
+# 0. Table Of Contents
+
+[1. Getting Started](#1-getting-started)
+  - [1.1. What Is Docker](#11-what-is-docker)
+  - [1.2. Docker Vs Virtual Machine](#12-docker-vs-virtual-machine)
+    * [1.2.1. Virtual Machine (VM)](#121-virtual-machine-vm)
+    * [1.2.2. Docker](#122-docker)
+    * [1.2.3. Docker Vs Virtual Machine](#123-docker-vs-virtual-machine)
+    * [1.2.4. The Difference](#124-the-difference)
+  - [1.3. Installing Docker](#13-installing-docker)
+  - [1.4. Exploring Docker Dashboard](#14-exploring-docker-dashboard)
+  - [1.5. Tools](#15-tools)
+  - [1.6. Getting Started With Docker](#16-getting-started-with-docker)
+
+[2. Containers](#2-containers)
+  - [2.1. Understanding Containers](#21-understanding-containers)
+    * [2.1.1. Containers](#211-containers)
+  - [2.2. Docker Images And Containers](#22-docker-images-and-containers)
+  - [2.3. Managing Containers](#23-managing-containers)
+  - [2.4. Docker Ps Format](#24-docker-ps-format)
+  - [2.5. Exposing Ports](#25-exposing-ports)
+  - [2.6. Exposing Multiple Ports](#26-exposing-multiple-ports)
+  - [2.7. Naming Containers](#27-naming-containers)
+  - [2.8. Running Container In The Background](#28-running-container-in-the-background)
+
+[3. Images](#3-images)
+  - [3.1. Docker Images](#31-docker-images)
+  - [3.2. Managing Docker Images](#32-managing-docker-images)
+  - [3.3. Docker Pull](#33-docker-pull)
+  - [3.4. Inspecting Images](#34-inspecting-images)
+
+[4. Docker Architecture](#4-docker-architecture)
+  - [4.1. Docker Architecture](#41-docker-architecture)
+  - [4.2. Docker Daemon](#42-docker-daemon)
+
+[5. Volumes](#5-volumes)
+  - [5.1. Volumes](#51-volumes)
+    * [5.1.1. Docker Volumes](#511-docker-volumes)
+  - [5.2. Bind Mount Volumes](#52-bind-mount-volumes)
+    * [5.2.1. Different Types Of Volumes](#521-different-types-of-volumes)
+  - [5.3. Bind Mount Volumes In Action](#53-bind-mount-volumes-in-action)
+  - [5.4. Using Volumes For Local Development](#54-using-volumes-for-local-development)
+  - [5.5. Docker Volumes](#55-docker-volumes)
+  - [5.6. TMPFS Mount](#56-tmpfs-mount)
+
+[6. Building Docker Images](#6-building-docker-images)
+  - [6.1. Dockerfile](#61-dockerfile)
+    * [6.1.1. Build Docker Images](#611-build-docker-images)
+  - [6.2. Creating Dockerfile](#62-creating-dockerfile)
+  - [6.3. Building Docker Images](#63-building-docker-images)
+  - [6.4. Running A Container From Custom Image](#64-running-a-container-from-custom-image)
+  - [6.5. Investigate Container File System](#65-investigate-container-file-system)
+  - [6.6. Building ExpressJS API](#66-building-expressjs-api)
+  - [6.7. Dockerfile And Building Image For `user-api`](#67-dockerfile-and-building-image-for-user-api)
+  - [6.8. Running Container For `user-api` Image](#68-running-container-for-user-api-image)
+  - [6.9. Exploring Dockerfiles](#69-exploring-dockerfiles)
+  - [6.10. Dockerfile Reference](#610-dockerfile-reference)
+
+[7. Image Tagging And Versioning](#7-image-tagging-and-versioning)
+  - [7.1. Pulling Images Using A Specific Tag](#71-pulling-images-using-a-specific-tag)
+  - [7.2. Creating Tags](#72-creating-tags)
+  - [7.3. Creating Version 2 Of The Dashboard](#73-creating-version-2-of-the-dashboard)
+  - [7.4. Never Run Latest In Production](#74-never-run-latest-in-production)
+  - [7.5. Image Variants](#75-image-variants)
+
+[8. Docker Registries](#8-docker-registries)
+  - [8.1. Docker Registries](#81-docker-registries)
+  - [8.2. Docker Login](#82-docker-login)
+  - [8.3. Docker Push](#83-docker-push)
+
+[9. Debugging](#9-debugging)
+  - [9.1. Docker Inspect](#91-docker-inspect)
+  - [9.2. Logs](#92-logs)
+  - [9.3. Running Commands In Containers](#93-running-commands-in-containers)
+
+[10. Networking](#10-networking)
+  - [10.1. How To Communicate Between Containers](#101-how-to-communicate-between-containers)
+    * [10.1.1. Docker Network](#1011-docker-network)
+  - [10.2. Docker Network](#102-docker-network)
+  - [10.3. MongoDB Container](#103-mongodb-container)
+  - [10.4. MongoExpress](#104-mongoexpress)
+  - [10.5. Understanding Container Communication](#105-understanding-container-communication)
+  - [10.6. Another Example](#106-another-example)
+
+[11. Docker Compose](#11-docker-compose)
+  - [11.1. What Is Docker Compose](#111-what-is-docker-compose)
+  - [11.2. Docker Compose CMD](#112-docker-compose-cmd)
+  - [11.3. Services](#113-services)
+  - [11.4. Docker Network](#114-docker-network)
+  - [11.5. Docker Compose Up](#115-docker-compose-up)
+  - [11.6. Exploring Docker Compose Commands](#116-exploring-docker-compose-commands)
+  - [11.7. Docker Volume](#117-docker-volume)
+  - [11.8. Docker Compose Documentation](#118-docker-compose-documentation)
+
+[12. Security And Static Analysis Tools](#12-security-and-static-analysis-tools)
+  - [12.1. Docker Scan (Scout Cves)](#121-docker-scan-scout-cves)
+  - [12.2. Trivy](#122-trivy)
+  - [12.3. Distroless Images](#123-distroless-images)
+    * [12.3.1. Why Use Distroless Images?](#1231-why-use-distroless-images)
+  - [12.4. Security Best Practices](#124-security-best-practices)
+
 # 1. Getting Started
 
 ## 1.1. What Is Docker
@@ -12,7 +113,7 @@
   - Docker abstracts and solves all of those problems so that it always works on every environment and every machine.
 - Docker is also used a lot for CI/CD (Continuous Integration/Continuous Delivery) workflows.
 
-## 1.2. Docker vs VM
+## 1.2. Docker Vs Virtual Machine
 
 ### 1.2.1. Virtual Machine (VM)
 
@@ -42,7 +143,7 @@
   - Docker
   - Application (which can have multiple copies).
 
-### 1.2.3. Docker vs VM
+### 1.2.3. Docker Vs Virtual Machine
 
 ![img.png](misc/docker-vs-vm.png)
 
